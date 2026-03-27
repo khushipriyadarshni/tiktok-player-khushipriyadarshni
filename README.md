@@ -6,9 +6,9 @@ A high-fidelity, TikTok-like video feed built with React (Vite) and native HTML5
 
 ## 🚀 Demo
 
-[![Video Demo](https://img.shields.io/badge/📹-Watch_Demo-FF0000?style=for-the-badge&logo=youtube)](https://bit.ly/BITSPILANIassignment_video)
+[![Video Demo](https://img.shields.io/badge/📹-Watch_Demo-FF0000?style=for-the-badge&logo=youtube)](https://drive.google.com/file/d/1mbvV-_ll-07wa-aQlp09GrB7QoRaJ8-l/view?usp=drive_link)
 
-**Demo Video Link:** [https://bit.ly/BITSPILANIassignment_video](https://bit.ly/BITSPILANIassignment_video)
+**Demo Video Link:** [BITSPILANIassignment_video](https://drive.google.com/file/d/1mbvV-_ll-07wa-aQlp09GrB7QoRaJ8-l/view?usp=drive_link)
 
 *(Run the app locally to see the full interactive experience)*
 
@@ -61,22 +61,27 @@ App
 ├── ActionBar (like, comment, share, save)
 ├── UserInfo (username, caption, follow button)
 
-### Key Implementation Details
+### Key Implementations
 
-1. **Infinite Looping**  
-   The feed renders `[last, ...videos, first]`. When a cloned video becomes active, the app programmatically scrolls to the matching real video, creating a seamless loop.
+#### 1. Infinite Looping
+- Feed renders `[last, ...videos, first]`
+- Smooth seamless scrolling loop
 
-2. **Playback Control**  
-   - `IntersectionObserver` tracks which video is most visible; only that video plays.  
-   - Each `VideoCard` uses a `ref` to directly control its `<video>` element, avoiding unnecessary re‑renders.
+#### 2. Playback Control
+- Uses `IntersectionObserver`
+- Only visible video plays
+- Controlled using `ref` (no unnecessary re-renders)
 
-3. **5‑8 Second Segments**  
-   Each video object includes `segmentStartSec` and `segmentDurationSec`. The player seeks to the start time and loops back when the segment ends. The progress bar reflects time within that segment only.
+#### 3. Segment Playback
+- Each video uses:
+  - `segmentStartSec`
+  - `segmentDurationSec`
+- Loops only a portion of video
 
-4. **Performance Optimizations**  
-   - Only one video plays at a time.  
-   - State is localised (e.g., like count is managed per video component).  
-   - `useMemo` prevents recalculation of processed video data.
+#### 4. Performance Optimization
+- Only one video plays at a time
+- Localized state management
+- `useMemo` prevents recalculations
 
 ---
 
@@ -84,19 +89,20 @@ App
 
 
 tiktok-player-khushipriyadarshni/
-├── src/
+│── src/
 │ ├── components/
-│ │ ├── VideoCard.jsx # Main video component with overlays
-│ │ ├── ActionBar.jsx # Right‑side action icons
-│ │ └── UserInfo.jsx # Bottom‑left user info & follow button
+│ │ ├── VideoCard.jsx
+│ │ ├── ActionBar.jsx
+│ │ └── UserInfo.jsx
 │ ├── data/
-│ │ └── videos.js # Video metadata (URLs, user info, segment data)
-│ ├── App.jsx # Main app container with feed and settings
-│ ├── App.css # Global styles and animations
-│ └── main.jsx # Entry point
-├── index.html
-├── package.json
-└── README.md
+│ │ └── videos.js
+│ ├── App.jsx
+│ ├── main.jsx
+│ └── App.css
+│
+│── index.html
+│── package.json
+│── README.md
 
 ---
 
@@ -106,49 +112,34 @@ tiktok-player-khushipriyadarshni/
 - Node.js (v16 or later)
 - npm or yarn
 
-### Installation
+## ⚡ Installation & Setup
 
 ```bash
-# Clone the repository
+# Clone repository
 git clone https://github.com/khushipriyadarshni/tiktok-player-khushipriyadarshni.git
+
+# Navigate to project
 cd tiktok-player-khushipriyadarshni
 
 # Install dependencies
 npm install
 
-# Run the development server
+# Run project
 npm run dev
 
-Open http://localhost:5173 in your browser.
-
-###⚙️ Configuration
-
-No environment variables needed. All video data is configured in src/data/videos.js. You can easily add or replace videos:
+Open:
+[http://localhost:5173](http://localhost:5173)
 
 
-// Example video object
-{
-  id: 1,
-  url: "/videos/sample1.mp4",
-  user: {
-    name: "ai_learner",
-    avatar: "/avatars/user1.jpg"
-  },
-  description: "How transformers actually work #AI #DeepLearning",
-  likes: 1240,
-  comments: 89,
-  shares: 45,
-  music: "Original Audio - ai_learner",
-  segmentStartSec: 0,      // start of short clip
-  segmentDurationSec: 7    // play for 7 seconds
-}
+---
 
-###👩‍💻 Author
+## 👩‍💻 Author
 
+**Khushi Priyadarshni**  
+🎓 B.E. Artificial Intelligence & Data Science  
 
-Khushi Priyadarshni
-B.E. Artificial Intelligence & Data Science
+---
 
-Thank you for reviewing my project!
+✨ Thank you for reviewing my project!
 
 
