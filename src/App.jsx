@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     if (!feedRef.current) return;
-    feedRef.current.scrollTop = window.innerHeight;
+    feedRef.current.scrollTop = feedRef.current.clientHeight;
   }, []);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function App() {
       clearTimeout(timerId);
       timerId = setTimeout(() => {
         if (!feedRef.current) return;
-        feedRef.current.scrollTop = currentRenderIndex * window.innerHeight;
+        feedRef.current.scrollTop = currentRenderIndex * feedRef.current.clientHeight;
       }, 60);
     };
 
@@ -43,7 +43,7 @@ function App() {
   const handleScroll = () => {
     if (!feedRef.current || resetScrollRef.current) return;
 
-    const viewHeight = window.innerHeight;
+    const viewHeight = feedRef.current.clientHeight;
     const rawIndex = Math.round(feedRef.current.scrollTop / viewHeight);
     const boundedIndex = Math.max(0, Math.min(rawIndex, feedVideos.length - 1));
     setCurrentRenderIndex(boundedIndex);
@@ -82,7 +82,7 @@ function App() {
 
   const goToRenderIndex = (targetIndex) => {
     if (!feedRef.current) return;
-    const viewHeight = window.innerHeight;
+    const viewHeight = feedRef.current.clientHeight;
 
     resetScrollRef.current = true;
     setCurrentRenderIndex(targetIndex);
